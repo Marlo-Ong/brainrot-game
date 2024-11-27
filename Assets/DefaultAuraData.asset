@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c0b87a3cd76462a9cd60d48daf309d, type: 3}
+  m_Name: DefaultAuraData
+  m_EditorClassIdentifier: 
+  titles:
+  - NPC
+  - Munch
+  - Lvl. 1 Crook
+  - Beta
+  - Omega
+  - Rizzler
+  - Alpha
+  - Lowkey Goated
+  - Turkish Quandale Dingle
+  - Sigma
+  - Lvl. 100 Boss
+  - Baby Gronk
+  - Shrigma
+  thresholds: 000000004500000064000000fa000000f4010000e8030000c40900008813000010270000a861000010270000204e000055a40000
+  sounds: []
