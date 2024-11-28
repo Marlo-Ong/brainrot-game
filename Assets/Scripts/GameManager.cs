@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Set In Inspector")]
     public AuraData auraData;
+    public GameObject[] auraTextPool;
 
     [Header("Do Not Set In Inspector")]
     public int auraPoints;
@@ -47,5 +49,16 @@ public class GameManager : MonoBehaviour
             singleton.auraPoints + pts,
             singleton.auraData.thresholds[0],
             singleton.auraData.thresholds[^1]);
+
+        // Set the first text in pool active.
+        foreach (var txt in singleton.auraTextPool)
+        {
+            if (!txt.activeInHierarchy)
+            {
+                txt.GetComponent<TMP_Text>().text = $"{pts:+#;-#;0} AURA";
+                txt.gameObject.SetActive(true);
+                break;
+            }
+        }
     }
 }
