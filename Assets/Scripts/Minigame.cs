@@ -39,6 +39,6 @@ public class Minigame : Screen
     {
         this.Stop();
         AudioManager.PlaySound(this.OnFailSound);
-        GameManager.AddAuraPoints(this.auraPointsToLose);
+        GameManager.AddAuraPoints(-this.auraPointsToLose);
     }
 }

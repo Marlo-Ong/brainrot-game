@@ -1680,7 +1680,7 @@ MonoBehaviour:
   auraPointsToLose: 10
   OnStartSound: {fileID: 0}
   OnFailSound: {fileID: 8300000, guid: 900ffc70bba3744afa3398c76cc87019, type: 3}
-  OnSuccessSound: {fileID: 0}
+  OnSuccessSound: {fileID: 8300000, guid: 05c28c97f0d364b998f9bbe7c9590a72, type: 3}
 --- !u!1 &2131425273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +1852,10 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 25fcc9586df744883877c7054fd9370f, type: 2}
+    - target: {fileID: 1834036752927977031, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
+      propertyPath: m_DirectAudioVolumes.Array.data[0]
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3137816847548763655, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
       propertyPath: m_Texture
       value: 
