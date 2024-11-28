@@ -26,7 +26,7 @@ public class JohnPork : MonoBehaviour
 
     void Update()
     {
-        if (minigame.isActiveAndEnabled && minigame.isPlaying)
+        if (minigame.isActiveAndEnabled && minigame.isPlaying && timeout > 0)
         {
             // Fail if you don't pick up the phone in time
             if (Time.time - startTime >= timeout)
@@ -41,6 +41,7 @@ public class JohnPork : MonoBehaviour
         else if (Time.time - lastCallTime >= callTimer)
         {
             minigame.Play();
+            lastCallTime = Time.time;
             startTime = Time.time;
             callTimer = Random.Range(frequencyMin, frequencyMax);
         }

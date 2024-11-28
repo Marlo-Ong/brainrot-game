@@ -27,11 +27,6 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.touchCount > 0)
-        {
-            Debug.Log("touched!");
-        }
-
         if (indexOfCurrentTitle < this.auraData.titles.Length &&                  // haven't reached highest title
             this.auraPoints >= this.auraData.thresholds[indexOfCurrentTitle + 1]  // reached next threshold
         )
