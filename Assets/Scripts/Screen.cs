@@ -4,9 +4,8 @@ using UnityEngine;
 
 public abstract class Screen : MonoBehaviour
 {
-    public Canvas canvas;
     public bool playOnStart = true;
-    protected bool isPlaying = false;
+    public bool isPlaying = false;
 
     void OnEnable()
     {

@@ -20,7 +20,7 @@ public class Video : Screen
             return;
 
         this.isPlaying = true;
-        this.canvas.gameObject.SetActive(true);
+        this.gameObject.SetActive(true);
 
         foreach (var video in this.videosToPlay)
         {
@@ -31,7 +31,7 @@ public class Video : Screen
     public override void Stop()
     {
         this.isPlaying = false;
-        this.canvas.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
 
         foreach (var video in this.videosToPlay)
         {
