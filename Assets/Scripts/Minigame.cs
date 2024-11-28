@@ -19,22 +19,26 @@ public class Minigame : Screen
     {
         this.isPlaying = true;
         AudioManager.PlaySound(this.OnStartSound);
-        this.canvas.gameObject.SetActive(true);
+        this.gameObject.SetActive(true);
     }
 
     public override void Stop()
     {
         this.isPlaying = false;
-        this.canvas.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     public virtual void Win()
     {
+        this.Stop();
         AudioManager.PlaySound(this.OnSuccessSound);
+        GameManager.AddAuraPoints(this.auraPointsToWin);
     }
 
     public virtual void Fail()
     {
+        this.Stop();
         AudioManager.PlaySound(this.OnFailSound);
+        GameManager.AddAuraPoints(this.auraPointsToLose);
     }
 }

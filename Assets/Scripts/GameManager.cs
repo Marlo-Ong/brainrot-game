@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
     private static GameManager singleton;
 
     [Header("Set In Inspector")]
-    public AuraData auraTitles;
+    public AuraData auraData;
 
     [Header("Do Not Set In Inspector")]
     public int auraPoints;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
         singleton = this;
 
         // Give lowest title.
-        this.auraTitle = this.auraTitles.titles[0];
+        this.auraTitle = this.auraData.titles[0];
     }
 
     public void Update()
@@ -31,16 +32,25 @@ public class GameManager : MonoBehaviour
             Debug.Log("touched!");
         }
 
-        if (indexOfCurrentTitle < this.auraTitles.titles.Length &&                  // haven't reached highest title
-            this.auraPoints >= this.auraTitles.thresholds[indexOfCurrentTitle + 1]  // reached next threshold
+        if (indexOfCurrentTitle < this.auraData.titles.Length &&                  // haven't reached highest title
+            this.auraPoints >= this.auraData.thresholds[indexOfCurrentTitle + 1]  // reached next threshold
         )
             UpgrateTitle();
     }
 
     public void UpgrateTitle()
     {
-        this.auraTitle = this.auraTitles.titles[++indexOfCurrentTitle];
+        this.auraTitle = this.auraData.titles[++indexOfCurrentTitle];
 
 
+    }
+
+    public static void AddAuraPoints(int pts)
+    {
+        // Clamp new aura points to the smallest and largest thresholds.
+        singleton.auraPoints = math.clamp(
+            singleton.auraPoints + pts,
+            singleton.auraData.thresholds[0],
+            singleton.auraData.thresholds[^1]);
     }
 }
