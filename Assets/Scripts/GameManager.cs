@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Set In Inspector")]
     public AuraData auraData;
     public GameObject[] auraTextPool;
+    public AudioClip auraTitleSound;
 
     [Header("Do Not Set In Inspector")]
     public int auraPoints;
@@ -38,8 +39,7 @@ public class GameManager : MonoBehaviour
     public void UpgrateTitle()
     {
         this.auraTitle = this.auraData.titles[++indexOfCurrentTitle];
-
-
+        StartCoroutine(SayAuraTitle());
     }
 
     public static void AddAuraPoints(int pts)
@@ -60,5 +60,18 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private IEnumerator SayAuraTitle()
+    {
+        AudioManager.PlaySound(this.auraTitleSound);
+
+        float startTime = Time.time;
+
+        // Wait one second.
+        while (Time.time - startTime < 0.75f)
+            yield return null;
+
+        AudioManager.PlaySound(this.auraData.sounds[indexOfCurrentTitle]);
     }
 }

@@ -26,5 +26,18 @@ MonoBehaviour:
   - Lvl. 100 Boss
   - Baby Gronk
   - Shrigma
-  thresholds: 000000004500000064000000fa000000f4010000e8030000c40900008813000010270000a861000010270000204e000055a40000
-  sounds: []
+  thresholds: 000000000a00000014000000fa000000f4010000e8030000c40900008813000010270000a861000010270000204e000055a40000
+  sounds:
+  - {fileID: 8300000, guid: 74691722eb09a4a069ed10ab529e45a3, type: 3}
+  - {fileID: 8300000, guid: 944589c9609ac4054a6d3e3d8a92a4d3, type: 3}
+  - {fileID: 8300000, guid: f750ea064bc17499f98b09c9f9e9405e, type: 3}
+  - {fileID: 8300000, guid: d6581f1598e8244fd8a88c8d27a1b425, type: 3}
+  - {fileID: 8300000, guid: 33e32aede77fd4509a8f1e83ef3b339f, type: 3}
+  - {fileID: 8300000, guid: 48d99eb6af3b44b40a603668d8934bc7, type: 3}
+  - {fileID: 8300000, guid: 13eb3c2874cec4ee282364142cf5dc52, type: 3}
+  - {fileID: 8300000, guid: a33a113f9b56b40f2ab3c9ff35cd9508, type: 3}
+  - {fileID: 8300000, guid: 13bd571eccbfe4704a503f7dcea7bc0d, type: 3}
+  - {fileID: 8300000, guid: 53ed6a63437d44e21960f8025bb72250, type: 3}
+  - {fileID: 8300000, guid: 281746389e8fd47e1a8c96807ae7bfe6, type: 3}
+  - {fileID: 8300000, guid: 4fc9d6531802a4bc29cd057f2d108bc5, type: 3}
+  - {fileID: 8300000, guid: e6cd7a04eabc24c8b9257c5a5e873a96, type: 3}
