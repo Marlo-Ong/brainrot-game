@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     [Header("Set In Inspector")]
     public AuraData auraData;
     public GameObject auraTitleObject;
+    public Slider auraProgressBar;
+    public TMP_Text auraPointsText;
     public GameObject[] auraTextPool;
     public AudioClip auraTitleSound;
 
@@ -39,11 +42,15 @@ public class GameManager : MonoBehaviour
 
     public void UpgrateTitle()
     {
+        if (indexOfCurrentTitle == this.auraData.titles.Length - 1)
+            return;
+
         this.auraTitle = this.auraData.titles[++indexOfCurrentTitle];
 
         // Update visuals.
         this.auraTitleObject.GetComponent<TMP_Text>().text = this.auraTitle;
         this.auraTitleObject.GetComponent<IdleTextAnimation>().StartAnimation();
+        this.auraProgressBar.value = 0.0f;
 
         // Play sound.
         StartCoroutine(SayAuraTitle());
@@ -67,6 +74,13 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+
+        // Update progress bar.
+        singleton.auraProgressBar.value = singleton.auraPoints / singleton.auraData.thresholds[singleton.indexOfCurrentTitle + 1];
+        Debug.Log(singleton.auraProgressBar.value);
+
+        // Update total aura points text.
+        singleton.auraPointsText.text = $"aura points: {singleton.auraPoints}";
     }
 
     private IEnumerator SayAuraTitle()
