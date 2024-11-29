@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Set In Inspector")]
     public AuraData auraData;
+    public GameObject auraTitleObject;
     public GameObject[] auraTextPool;
     public AudioClip auraTitleSound;
 
@@ -39,6 +40,12 @@ public class GameManager : MonoBehaviour
     public void UpgrateTitle()
     {
         this.auraTitle = this.auraData.titles[++indexOfCurrentTitle];
+
+        // Update visuals.
+        this.auraTitleObject.GetComponent<TMP_Text>().text = this.auraTitle;
+        this.auraTitleObject.GetComponent<IdleTextAnimation>().StartAnimation();
+
+        // Play sound.
         StartCoroutine(SayAuraTitle());
     }
 
