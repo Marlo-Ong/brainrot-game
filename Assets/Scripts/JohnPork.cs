@@ -7,7 +7,7 @@ public class JohnPork : Minigame
 {
     public Slider slider;
 
-    public override void OnStop()
+    protected override void OnStop()
     {
         base.OnStop();
         slider.value = 0;

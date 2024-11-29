@@ -24,12 +24,12 @@ public class Minigame : Screen
     private float startTime = 0.0f;
     private float lastCallTime = 0.0f;
 
-    public virtual void OnPause()
+    protected virtual void OnPause()
     {
         this.isPlaying = false;
     }
 
-    public virtual void OnPlay()
+    protected virtual void OnPlay()
     {
         this.isPlaying = true;
         AudioManager.PlaySound(this.OnStartSound);
@@ -38,7 +38,7 @@ public class Minigame : Screen
         callTimer = Random.Range(frequencyMin, frequencyMax);
     }
 
-    public virtual void OnStop()
+    protected virtual void OnStop()
     {
         this.isPlaying = false;
         this.Hide();
