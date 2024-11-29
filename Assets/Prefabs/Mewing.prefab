@@ -84,7 +84,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6533659920952974403}
-  - component: {fileID: 8640942859371702218}
+  - component: {fileID: 2977946668091803147}
+  - component: {fileID: 1213576315070681373}
   m_Layer: 5
   m_Name: Minigame
   m_TagString: Untagged
@@ -114,7 +115,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8640942859371702218
+--- !u!223 &2977946668091803147
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2338220640453970642}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &1213576315070681373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,16 +147,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2338220640453970642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b671d395db8a4cbc80a09fcd9e9120e, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playOnStart: 1
-  isPlaying: 0
-  auraPointsToWin: 10
-  auraPointsToLose: 10
-  OnStartSound: {fileID: 8300000, guid: 41110505490774d5e98bbe477a8ca2d8, type: 3}
-  OnFailSound: {fileID: 0}
-  OnSuccessSound: {fileID: 8300000, guid: 41110505490774d5e98bbe477a8ca2d8, type: 3}
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &2436726357670270224
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +264,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5987039573929114702}
           m_TargetAssemblyTypeName: JohnPork, Assembly-CSharp
-          m_MethodName: OnPointerUp
+          m_MethodName: CheckSliderValue
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -697,8 +719,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8008a3cee8a4c0bb184b38fde046ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 8640942859371702218}
-  slider: {fileID: 892870715629331878}
+  canvas: {fileID: 2977946668091803147}
+  isBlocking: 0
+  playOnStart: 0
+  isPlaying: 0
+  auraPointsToWin: 5
+  auraPointsToLose: 5
   frequencyMin: 5
   frequencyMax: 10
   timeout: -1
+  OnStartSound: {fileID: 8300000, guid: 41110505490774d5e98bbe477a8ca2d8, type: 3}
+  OnFailSound: {fileID: 0}
+  OnSuccessSound: {fileID: 8300000, guid: 41110505490774d5e98bbe477a8ca2d8, type: 3}
+  slider: {fileID: 892870715629331878}

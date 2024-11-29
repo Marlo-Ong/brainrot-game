@@ -124,11 +124,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8008a3cee8a4c0bb184b38fde046ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 4529963366524741832}
-  slider: {fileID: 1507947490482964023}
+  canvas: {fileID: 8535154298588898583}
+  isBlocking: 0
+  playOnStart: 0
+  isPlaying: 0
+  auraPointsToWin: 10
+  auraPointsToLose: 10
   frequencyMin: 10
   frequencyMax: 20
   timeout: 3
+  OnStartSound: {fileID: 0}
+  OnFailSound: {fileID: 8300000, guid: 900ffc70bba3744afa3398c76cc87019, type: 3}
+  OnSuccessSound: {fileID: 8300000, guid: 05c28c97f0d364b998f9bbe7c9590a72, type: 3}
+  slider: {fileID: 1507947490482964023}
 --- !u!1 &5245573706974170032
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,8 +450,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877088938803410548}
-  - component: {fileID: 4529963366524741832}
   - component: {fileID: 3972432064570853356}
+  - component: {fileID: 8535154298588898583}
+  - component: {fileID: 1595988959513235547}
   m_Layer: 5
   m_Name: Minigame
   m_TagString: Untagged
@@ -473,25 +482,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4529963366524741832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5830171393079026542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b671d395db8a4cbc80a09fcd9e9120e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOnStart: 1
-  isPlaying: 0
-  auraPointsToWin: 10
-  auraPointsToLose: 10
-  OnStartSound: {fileID: 0}
-  OnFailSound: {fileID: 8300000, guid: 900ffc70bba3744afa3398c76cc87019, type: 3}
-  OnSuccessSound: {fileID: 8300000, guid: 05c28c97f0d364b998f9bbe7c9590a72, type: 3}
 --- !u!82 &3972432064570853356
 AudioSource:
   m_ObjectHideFlags: 0
@@ -588,6 +578,46 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!223 &8535154298588898583
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5830171393079026542}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &1595988959513235547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5830171393079026542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5879827620444840043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1049,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 9064686495150981303}
           m_TargetAssemblyTypeName: JohnPork, Assembly-CSharp
-          m_MethodName: OnPointerUp
+          m_MethodName: CheckSliderValue
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
