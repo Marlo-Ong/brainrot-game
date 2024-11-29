@@ -1731,10 +1731,12 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 00b530840300f4994b2fdefc11815e95, type: 3}
   - {fileID: 32900000, guid: 903df7a3aafe646939e14065d7c81505, type: 3}
   - {fileID: 32900000, guid: 2e03407539fdc432ca70dd93888d330a, type: 3}
+  - {fileID: 32900000, guid: 9bedd526296b1411a9fbe6199d3a2d1d, type: 3}
   correspondingTextures:
   - {fileID: 8400000, guid: 508876137ebd942b382e8607bb29c638, type: 2}
   - {fileID: 8400000, guid: 25fcc9586df744883877c7054fd9370f, type: 2}
   - {fileID: 8400000, guid: d157f552a3a1a4d7e919c6e4645f82cc, type: 2}
+  - {fileID: 8400000, guid: a3d4ab51b74274f8bb524c2ceffb651b, type: 2}
   playerPrefab: {fileID: 1190367511}
   frequencyMin: 5
   frequencyMax: 10
