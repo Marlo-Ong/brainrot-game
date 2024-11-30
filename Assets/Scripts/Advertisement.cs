@@ -21,7 +21,7 @@ public class Advertisement : MonoBehaviour
     public AudioClip OnStartSound;
     public AudioClip OnSuccessSound;
 
-    void Start()
+    void OnEnable()
     {
         StartNewAd();
     }
@@ -58,6 +58,7 @@ public class Advertisement : MonoBehaviour
         var newAdObject = Instantiate(playerPrefab);
         newAdObject.transform.SetParent(this.transform);
         this.PlaceRandomly(newAdObject.GetComponent<RectTransform>());
+        newAdObject.SetActive(true);
 
         var videoComponent = newAdObject.GetComponent<Video>();
         videoComponent.PlaceInFront();
@@ -79,6 +80,7 @@ public class Advertisement : MonoBehaviour
     IEnumerator DestroyAd(float timer, GameObject ad)
     {
         yield return new WaitForSeconds(timer);
+        Win();
         Destroy(ad);
 
         yield return new WaitForSeconds(Random.Range(frequencyMin, frequencyMax));

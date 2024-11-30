@@ -727,7 +727,7 @@ MonoBehaviour:
   auraPointsToLose: 5
   frequencyMin: 5
   frequencyMax: 10
-  timeout: -1
+  timeout: 5
   OnStartSound: {fileID: 8300000, guid: 41110505490774d5e98bbe477a8ca2d8, type: 3}
   OnFailSound: {fileID: 0}
   OnSuccessSound: {fileID: 8300000, guid: 41110505490774d5e98bbe477a8ca2d8, type: 3}
