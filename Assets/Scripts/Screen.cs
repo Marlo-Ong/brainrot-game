@@ -15,13 +15,13 @@ public abstract class Screen : MonoBehaviour
     const int HUDLayer = 101;
 
 
-    void OnEnable()
+    public virtual void OnEnable()
     {
         if (playOnStart)
             this.Play();
     }
 
-    void OnDisable()
+    public virtual void OnDisable()
     {
         this.Stop();
     }

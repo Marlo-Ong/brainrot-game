@@ -9,11 +9,15 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager singleton;
+    public static Canvas MainCanvas => singleton.mainCanvas;
 
     [Header("Set In Inspector")]
     public AuraData auraData;
-    public GameObject auraTitleObject;
+    public Canvas mainCanvas;
     public Slider auraProgressBar;
+    public IdleTextAnimation middleTextObject;
+    public TMP_Text auraTitleSmall;
+    public TMP_Text auraTitleLarge;
     public TMP_Text auraPointsText;
     public GameObject[] auraTextPool;
     public AudioClip auraTitleSound;
@@ -50,8 +54,9 @@ public class GameManager : MonoBehaviour
         this.auraTitle = this.auraData.titles[++indexOfCurrentTitle];
 
         // Update visuals.
-        this.auraTitleObject.GetComponent<TMP_Text>().text = this.auraTitle;
-        this.auraTitleObject.GetComponent<IdleTextAnimation>().StartAnimation();
+        this.auraTitleLarge.text = this.auraTitle;
+        this.auraTitleSmall.text = this.auraTitle;
+        this.middleTextObject.StartAnimation();
 
         // Play sound.
         StartCoroutine(SayAuraTitle());
@@ -70,6 +75,7 @@ public class GameManager : MonoBehaviour
         {
             if (!txt.activeInHierarchy)
             {
+                PlaceRandomly(txt.GetComponent<RectTransform>());
                 txt.GetComponent<TMP_Text>().text = $"{pts:+#;-#;0} AURA";
                 txt.SetActive(true);
                 break;
@@ -87,7 +93,7 @@ public class GameManager : MonoBehaviour
         singleton.progressBarAnimation = singleton.StartCoroutine(singleton.AnimateProgressBar(oldValue, newValue));
 
         // Update total aura points text.
-        singleton.auraPointsText.text = $"aura points: {singleton.auraPoints}";
+        singleton.auraPointsText.text = $"AURA: {singleton.auraPoints}";
     }
 
     private IEnumerator AnimateProgressBar(float from, float to)
@@ -120,5 +126,28 @@ public class GameManager : MonoBehaviour
             yield return null;
 
         AudioManager.PlaySound(this.auraData.sounds[indexOfCurrentTitle]);
+    }
+
+    public static void PlaceRandomly(RectTransform transform)
+    {
+        // Get the Canvas dimensions (sizeDelta is in local space for the RectTransform)
+        Vector2 canvasSize = MainCanvas.GetComponent<RectTransform>().sizeDelta;
+
+        // Get the size of the UI element
+        Vector2 uiElementSize = transform.sizeDelta;
+
+        // Calculate the random position bounds, ensuring the UI element stays fully within the Canvas
+        float xMin = -canvasSize.x / 2 + uiElementSize.x / 2;
+        float xMax = canvasSize.x / 2 - uiElementSize.x / 2;
+
+        float yMin = -canvasSize.y / 2 + uiElementSize.y / 2;
+        float yMax = canvasSize.y / 2 - uiElementSize.y / 2;
+
+        // Generate random positions within the adjusted bounds
+        float randomX = UnityEngine.Random.Range(xMin, xMax);
+        float randomY = UnityEngine.Random.Range(yMin, yMax);
+
+        // Set the UI element's anchored position
+        transform.anchoredPosition = new Vector2(randomX, randomY);
     }
 }

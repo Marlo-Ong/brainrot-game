@@ -22,7 +22,13 @@ public class Minigame : Screen
 
     private int callTimer;
     private float startTime = 0.0f;
-    private float lastCallTime = 0.0f;
+    private float lastCallTime;
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        this.lastCallTime = this.frequencyMin;
+    }
 
     protected virtual void OnPause()
     {
@@ -64,8 +70,7 @@ public class Minigame : Screen
 
     void Update()
     {
-        if (this.isActiveAndEnabled
-            && this.isPlaying
+        if (this.isPlaying
             && timeout > 0
             && Time.time - startTime >= timeout)
         {

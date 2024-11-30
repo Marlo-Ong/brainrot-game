@@ -14,6 +14,7 @@ public class IdleTextAnimation : MonoBehaviour
 {
     public IdleAnimation anim;
     public AnimationCurve _idleCurve;
+    public bool _playOnEnable = true;
     public float _duration;
     public bool _loop;
     public bool _fadeOut;
@@ -27,7 +28,8 @@ public class IdleTextAnimation : MonoBehaviour
 
     void OnEnable()
     {
-        StartAnimation();
+        if (this._playOnEnable)
+            StartAnimation();
     }
 
     public void StartAnimation()

@@ -11,7 +11,6 @@ public class Advertisement : MonoBehaviour
     public VideoClip[] clipsToPlay;
     public RenderTexture[] correspondingTextures;
     public GameObject playerPrefab;
-    public RectTransform canvasRectTransform;
 
     [Tooltip("Minimum number of seconds before ad can play")]
     public int frequencyMin;
@@ -27,28 +26,7 @@ public class Advertisement : MonoBehaviour
     }
 
 
-    private void PlaceRandomly(RectTransform adTransform)
-    {
-        // Get the Canvas dimensions (sizeDelta is in local space for the RectTransform)
-        Vector2 canvasSize = canvasRectTransform.sizeDelta;
 
-        // Get the size of the UI element
-        Vector2 uiElementSize = adTransform.sizeDelta;
-
-        // Calculate the random position bounds, ensuring the UI element stays fully within the Canvas
-        float xMin = -canvasSize.x / 2 + uiElementSize.x / 2;
-        float xMax = canvasSize.x / 2 - uiElementSize.x / 2;
-
-        float yMin = -canvasSize.y / 2 + uiElementSize.y / 2;
-        float yMax = canvasSize.y / 2 - uiElementSize.y / 2;
-
-        // Generate random positions within the adjusted bounds
-        float randomX = Random.Range(xMin, xMax);
-        float randomY = Random.Range(yMin, yMax);
-
-        // Set the UI element's anchored position
-        adTransform.anchoredPosition = new Vector2(randomX, randomY);
-    }
 
     public void StartNewAd()
     {
@@ -57,7 +35,7 @@ public class Advertisement : MonoBehaviour
         // Create a new ad
         var newAdObject = Instantiate(playerPrefab);
         newAdObject.transform.SetParent(this.transform);
-        this.PlaceRandomly(newAdObject.GetComponent<RectTransform>());
+        GameManager.PlaceRandomly(newAdObject.GetComponent<RectTransform>());
         newAdObject.SetActive(true);
 
         var videoComponent = newAdObject.GetComponent<Video>();
