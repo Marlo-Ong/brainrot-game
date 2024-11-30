@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class AdStarter : MonoBehaviour
 {
-    public GameObject advertisementObject;
+    public Advertisement advertisementObject;
     public Button button;
     public int secondsBeforeStartingAds;
 
     void Start()
     {
-        advertisementObject.SetActive(false);
+        advertisementObject.gameObject.SetActive(false);
         button.gameObject.SetActive(false);
         button.onClick.AddListener(StartAdvertisements);
         StartCoroutine(WaitToShowButton());
@@ -25,7 +25,8 @@ public class AdStarter : MonoBehaviour
 
     private void StartAdvertisements()
     {
-        advertisementObject.SetActive(true);
+        advertisementObject.gameObject.SetActive(true);
+        advertisementObject.Play();
         button.gameObject.SetActive(false);
     }
 }

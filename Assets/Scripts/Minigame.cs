@@ -97,7 +97,8 @@ public class Minigame : Screen
     private IEnumerator ContinueCooldown()
     {
         yield return new WaitForSeconds(Random.Range(frequencyMin, frequencyMax));
-        this.Play();
+        if (!this.isPlaying)
+            this.Play();
     }
 
     private IEnumerator StartTimeout()

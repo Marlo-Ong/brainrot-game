@@ -562,7 +562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &290493049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2564,11 +2564,13 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 903df7a3aafe646939e14065d7c81505, type: 3}
   - {fileID: 32900000, guid: 2e03407539fdc432ca70dd93888d330a, type: 3}
   - {fileID: 32900000, guid: 9bedd526296b1411a9fbe6199d3a2d1d, type: 3}
+  - {fileID: 32900000, guid: bcf3bfaeacf614ebdad2ce8a3b0e2d8d, type: 3}
   correspondingTextures:
   - {fileID: 8400000, guid: 508876137ebd942b382e8607bb29c638, type: 2}
   - {fileID: 8400000, guid: 25fcc9586df744883877c7054fd9370f, type: 2}
   - {fileID: 8400000, guid: d157f552a3a1a4d7e919c6e4645f82cc, type: 2}
   - {fileID: 8400000, guid: a3d4ab51b74274f8bb524c2ceffb651b, type: 2}
+  - {fileID: 8400000, guid: ff28666a1bf21472d81b7cbfa684cfec, type: 2}
 --- !u!224 &1426530259 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
@@ -3671,7 +3673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1859836683
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4805,7 +4807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6026616795677985650, guid: 5b1e47dcc974749ec83d4f81ee1a8d28, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7329494036431403629, guid: 5b1e47dcc974749ec83d4f81ee1a8d28, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4939,7 +4941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485996134252184693, guid: 3f899ed2b14f04bf5b995a9079660791, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9214372327098227439, guid: 3f899ed2b14f04bf5b995a9079660791, type: 3}
       propertyPath: m_Pivot.x
