@@ -1785,6 +1785,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
   m_PrefabInstance: {fileID: 2053331366}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &1190367515 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 988942744608960596, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
+  m_PrefabInstance: {fileID: 2053331366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1190367516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,33 +1802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6faeeb001a8742fc83b45209dfe82de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!225 &1190367517
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190367511}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!114 &1190367518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190367511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e63f643e2874c8f8ec0353bbb8a714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 2135807331}
-  secondsBeforeAllowingExit: 5
-  auraPointsToLose: 5
 --- !u!1 &1246283508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,6 +1939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5222e10f3296247a49f7ed07d2d5a90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalFailSound: {fileID: 8300000, guid: 97ec8994436324112a9600f67b9d40c4, type: 3}
+  globalWinSound: {fileID: 8300000, guid: 37a912f09e2bc425881fe01b03331834, type: 3}
 --- !u!82 &1276128833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2137,7 +2117,7 @@ GameObject:
   - component: {fileID: 1315544898}
   - component: {fileID: 1315544899}
   m_Layer: 5
-  m_Name: Advertisements
+  m_Name: Advertisement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2175,8 +2155,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5a76d2ba7d94daf8e97b27c99a06f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  auraPointsToWin: 0
-  auraPointsToLose: 0
+  canvas: {fileID: 1190367515}
+  isBlocking: 1
+  playOnStart: 1
+  isPlaying: 0
+  auraPointsToWin: 2
+  auraPointsToLose: 2
+  frequencyMin: 5
+  frequencyMax: 10
+  timeout: -1
+  OnStartSound: {fileID: 0}
+  OnFailSound: {fileID: 0}
+  OnSuccessSound: {fileID: 0}
+  closeAdButton: {fileID: 2135807331}
+  secondsBeforeAllowingExit: 5
   clipsToPlay:
   - {fileID: 32900000, guid: 00b530840300f4994b2fdefc11815e95, type: 3}
   - {fileID: 32900000, guid: 903df7a3aafe646939e14065d7c81505, type: 3}
@@ -2187,11 +2179,6 @@ MonoBehaviour:
   - {fileID: 8400000, guid: 25fcc9586df744883877c7054fd9370f, type: 2}
   - {fileID: 8400000, guid: d157f552a3a1a4d7e919c6e4645f82cc, type: 2}
   - {fileID: 8400000, guid: a3d4ab51b74274f8bb524c2ceffb651b, type: 2}
-  playerPrefab: {fileID: 1190367511}
-  frequencyMin: 5
-  frequencyMax: 10
-  OnStartSound: {fileID: 0}
-  OnSuccessSound: {fileID: 0}
 --- !u!224 &1426530259 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
@@ -3402,6 +3389,18 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3449,6 +3448,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 178357652646709741, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 988942744608960596, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -3478,12 +3481,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8284573756194334704, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1190367516}
-    - targetCorrespondingSourceObject: {fileID: 8284573756194334704, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1190367517}
-    - targetCorrespondingSourceObject: {fileID: 8284573756194334704, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1190367518}
   m_SourcePrefab: {fileID: 100100000, guid: 5fe33d92803234039b367ec3a0280829, type: 3}
 --- !u!1 &2059308049 stripped
 GameObject:

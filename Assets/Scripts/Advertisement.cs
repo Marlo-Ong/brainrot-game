@@ -3,67 +3,84 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class Advertisement : MonoBehaviour
+/// <summary>
+/// Container for a Video and close-ad Button.
+/// This object's Canvas should be a reference to
+/// the Video canvas.
+/// </summary>
+public class Advertisement : Minigame
 {
-    public int auraPointsToWin;
-    public int auraPointsToLose;
-
+    public Button closeAdButton;
+    public int secondsBeforeAllowingExit;
     public VideoClip[] clipsToPlay;
     public RenderTexture[] correspondingTextures;
-    public GameObject playerPrefab;
 
-    [Tooltip("Minimum number of seconds before ad can play")]
-    public int frequencyMin;
-    [Tooltip("Maximum number of seconds before ad can play")]
-    public int frequencyMax;
+    private Coroutine endAdCoroutine;
 
-    public AudioClip OnStartSound;
-    public AudioClip OnSuccessSound;
-
-    void OnEnable()
+    protected override void OnSetup()
     {
-        StartNewAd();
+        base.OnSetup();
+        closeAdButton.gameObject.SetActive(false);
+        closeAdButton.onClick.AddListener(this.CloseAd);
+        StartCoroutine(WaitToAllowExit());
     }
 
-
-
-
-    public void StartNewAd()
+    protected override void OnPlay()
     {
-        AudioManager.PlaySound(this.OnStartSound);
+        base.OnPlay();
 
-        // Create a new ad
-        var newAdObject = Instantiate(playerPrefab);
-        newAdObject.transform.SetParent(this.transform);
-        GameManager.PlaceRandomly(newAdObject.GetComponent<RectTransform>());
-        newAdObject.SetActive(true);
+        // Place the ad in a random position on the screen.
+        GameManager.PlaceRandomly(canvas.GetComponent<RectTransform>());
 
-        var videoComponent = newAdObject.GetComponent<Video>();
-        videoComponent.PlaceInFront();
-
+        var videoComponent = canvas.GetComponent<Video>();
         var imageComponent = videoComponent.gameObject.GetComponentInChildren<RawImage>();
         var sliderComponent = videoComponent.gameObject.GetComponentInChildren<Slider>();
         var newAd = videoComponent.gameObject.GetComponentInChildren<VideoPlayer>();
 
+        // Make the ad block everything else.
+        videoComponent.PlaceInFront();
+
+        // Choose a random video clip.
         int i = Random.Range(0, clipsToPlay.Length);
         newAd.clip = clipsToPlay[i];
+
+        // Lower the audio of the clip.
         newAd.SetDirectAudioVolume(0, 0.1f);
+
+        // Set the image's texture to the video.
         imageComponent.texture = correspondingTextures[i];
         newAd.targetTexture = correspondingTextures[i];
 
+        // Play the clip.
+        canvas.gameObject.SetActive(true);
         newAd.Play();
-        StartCoroutine(DestroyAd((float)newAd.length, newAdObject));
+
+        // Set a timer to end the ad, if not closed by the player first.
+        if (endAdCoroutine != null)
+            StopCoroutine(endAdCoroutine);
+        endAdCoroutine = StartCoroutine(EndAd((float)newAd.length));
+
+        // Update the progress of the slider.
         StartCoroutine(UpdateSlider(sliderComponent, newAd));
     }
 
-    IEnumerator DestroyAd(float timer, GameObject ad)
+    private IEnumerator WaitToAllowExit()
+    {
+        yield return new WaitForSeconds(this.secondsBeforeAllowingExit);
+        closeAdButton.gameObject.SetActive(true);
+    }
+
+    private void CloseAd()
+    {
+        StopCoroutine(endAdCoroutine);
+        this.Fail();
+    }
+
+    IEnumerator EndAd(float timer)
     {
         yield return new WaitForSeconds(timer);
-        Win();
-        Destroy(ad);
-
-        yield return new WaitForSeconds(Random.Range(frequencyMin, frequencyMax));
-        StartNewAd();
+        if (canvas.isActiveAndEnabled)
+            Win();
     }
 
     IEnumerator UpdateSlider(Slider slider, VideoPlayer ad)
@@ -73,11 +90,5 @@ public class Advertisement : MonoBehaviour
             slider.value = (float)(ad.time / ad.length);
             yield return null;
         }
-    }
-
-    public virtual void Win()
-    {
-        AudioManager.PlaySound(this.OnSuccessSound);
-        GameManager.AddAuraPoints(this.auraPointsToWin);
     }
 }

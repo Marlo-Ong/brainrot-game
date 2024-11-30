@@ -28,6 +28,8 @@ public class Video : Screen
         }
     }
 
+    public override void Setup() { }
+
     public override void Stop()
     {
         this.isPlaying = false;

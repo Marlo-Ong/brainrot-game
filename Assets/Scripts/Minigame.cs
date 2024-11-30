@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Minigame : Screen
@@ -6,11 +7,11 @@ public class Minigame : Screen
     public int auraPointsToLose;
 
     [Tooltip("Minimum number of seconds before minigame can restart")]
-    public int frequencyMin;
+    public float frequencyMin;
     [Tooltip("Maximum number of seconds before minigame can restart")]
-    public int frequencyMax;
+    public float frequencyMax;
     [Tooltip("How many seconds do you have to complete the minigame? (set to -1 for unlimited)")]
-    public int timeout;
+    public float timeout;
 
     public AudioClip OnStartSound;
     public AudioClip OnFailSound;
@@ -19,15 +20,14 @@ public class Minigame : Screen
     public override void Stop() => OnStop();
     public override void Play() => OnPlay();
     public override void Pause() => OnPause();
+    public override void Setup() => OnSetup();
 
-    private int callTimer;
-    private float startTime = 0.0f;
-    private float lastCallTime;
+    private Coroutine cooldownCoroutine;
+    private Coroutine timeoutCoroutine;
 
-    public override void OnEnable()
+    protected virtual void OnSetup()
     {
-        base.OnEnable();
-        this.lastCallTime = this.frequencyMin;
+        this.StartCooldown();
     }
 
     protected virtual void OnPause()
@@ -41,7 +41,16 @@ public class Minigame : Screen
         AudioManager.PlaySound(this.OnStartSound);
         this.PlaceInFront();
         this.Display();
-        callTimer = Random.Range(frequencyMin, frequencyMax);
+
+        if (this.timeout > 0)
+        {
+            if (this.timeoutCoroutine != null)
+            {
+                StopCoroutine(this.timeoutCoroutine);
+                this.timeoutCoroutine = null;
+            }
+            this.timeoutCoroutine = this.StartCoroutine(StartTimeout());
+        }
     }
 
     protected virtual void OnStop()
@@ -49,7 +58,7 @@ public class Minigame : Screen
         this.isPlaying = false;
         this.Hide();
         this.PlaceInBack();
-        this.lastCallTime = Time.time;
+        this.StartCooldown();
     }
 
     public virtual void Win()
@@ -70,24 +79,27 @@ public class Minigame : Screen
 
     public virtual void OnUpdate() { }
 
-    void Update()
+    public void StartCooldown()
     {
-        if (this.isPlaying
-            && timeout > 0
-            && Time.time - startTime >= timeout)
+        // Start cooldown.
+        if (this.cooldownCoroutine != null)
         {
-            this.Fail();
+            StopCoroutine(this.cooldownCoroutine);
+            this.cooldownCoroutine = null;
         }
+        this.cooldownCoroutine = StartCoroutine(ContinueCooldown());
+    }
 
-        else if (Time.time - lastCallTime >= callTimer)
-        {
-            this.Play();
-            lastCallTime = Time.time;
-            startTime = Time.time;
-            callTimer = Random.Range(frequencyMin, frequencyMax);
-        }
+    private IEnumerator ContinueCooldown()
+    {
+        yield return new WaitForSeconds(Random.Range(frequencyMin, frequencyMax));
+        this.Play();
+    }
 
+    private IEnumerator StartTimeout()
+    {
+        yield return new WaitForSeconds(this.timeout);
         if (this.isPlaying)
-            OnUpdate();
+            this.Fail();
     }
 }
