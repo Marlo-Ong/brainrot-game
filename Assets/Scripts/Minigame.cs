@@ -56,6 +56,7 @@ public class Minigame : Screen
     {
         this.Stop();
         AudioManager.PlaySound(this.OnSuccessSound);
+        AudioManager.PlayWinSound();
         GameManager.AddAuraPoints(this.auraPointsToWin);
     }
 
@@ -63,6 +64,7 @@ public class Minigame : Screen
     {
         this.Stop();
         AudioManager.PlaySound(this.OnFailSound);
+        AudioManager.PlayFailSound();
         GameManager.AddAuraPoints(-this.auraPointsToLose);
     }
 
