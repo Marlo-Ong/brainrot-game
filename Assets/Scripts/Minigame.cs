@@ -11,6 +11,7 @@ public class Minigame : Screen
     [Tooltip("Maximum number of seconds before minigame can restart")]
     public float frequencyMax;
     [Tooltip("How many seconds do you have to complete the minigame? (set to -1 for unlimited)")]
+    public bool losePointsOnTimeout = true;
     public float timeout;
 
     public AudioClip OnStartSound;
@@ -40,6 +41,8 @@ public class Minigame : Screen
         this.isPlaying = true;
         AudioManager.PlaySound(this.OnStartSound);
         this.PlaceInFront();
+        if (this.placeRandomly)
+            GameManager.PlaceRandomly(this.canvas.GetComponent<RectTransform>());
         this.Display();
 
         if (this.timeout > 0)
@@ -78,6 +81,7 @@ public class Minigame : Screen
     }
 
     public virtual void OnUpdate() { }
+    public virtual void OnTimeout() { }
 
     public void StartCooldown()
     {
@@ -100,6 +104,12 @@ public class Minigame : Screen
     {
         yield return new WaitForSeconds(this.timeout);
         if (this.isPlaying)
-            this.Fail();
+        {
+            if (this.losePointsOnTimeout)
+                this.Fail();
+            else
+                this.Stop();
+            this.OnTimeout();
+        }
     }
 }

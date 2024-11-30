@@ -8,6 +8,7 @@ public abstract class Screen : MonoBehaviour
     public bool isBlocking = false;
     public bool playOnStart = true;
     public bool isPlaying = false;
+    public bool placeRandomly = false;
 
     const int BackgroundLayer = 0;
     private static int ForegroundLayer = 0;
@@ -17,9 +18,9 @@ public abstract class Screen : MonoBehaviour
 
     public void OnEnable()
     {
+        this.Setup();
         if (playOnStart)
             this.Play();
-        this.Setup();
     }
 
     public void OnDisable()
