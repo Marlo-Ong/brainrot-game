@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public string auraTitle;
     public int indexOfCurrentTitle = 0;
 
+    private Coroutine progressBarAnimation;
+
     void Awake()
     {
         Debug.Assert(singleton == null);
@@ -50,7 +52,6 @@ public class GameManager : MonoBehaviour
         // Update visuals.
         this.auraTitleObject.GetComponent<TMP_Text>().text = this.auraTitle;
         this.auraTitleObject.GetComponent<IdleTextAnimation>().StartAnimation();
-        this.auraProgressBar.value = 0.0f;
 
         // Play sound.
         StartCoroutine(SayAuraTitle());
@@ -70,17 +71,42 @@ public class GameManager : MonoBehaviour
             if (!txt.activeInHierarchy)
             {
                 txt.GetComponent<TMP_Text>().text = $"{pts:+#;-#;0} AURA";
-                txt.gameObject.SetActive(true);
+                txt.SetActive(true);
                 break;
             }
         }
 
         // Update progress bar.
-        singleton.auraProgressBar.value = singleton.auraPoints / singleton.auraData.thresholds[singleton.indexOfCurrentTitle + 1];
-        Debug.Log(singleton.auraProgressBar.value);
+        var oldValue = singleton.auraProgressBar.value;
+        var newValue = (float)singleton.auraPoints / singleton.auraData.thresholds[singleton.indexOfCurrentTitle + 1];
+
+        // If upgrading, calculate offset of next bar.
+        if (singleton.progressBarAnimation != null)
+            singleton.StopCoroutine(singleton.progressBarAnimation);
+
+        singleton.progressBarAnimation = singleton.StartCoroutine(singleton.AnimateProgressBar(oldValue, newValue));
 
         // Update total aura points text.
         singleton.auraPointsText.text = $"aura points: {singleton.auraPoints}";
+    }
+
+    private IEnumerator AnimateProgressBar(float from, float to)
+    {
+        float duration = 0f;
+        while (duration < 1f)
+        {
+            this.auraProgressBar.value = Mathf.Lerp(from, to, duration);
+            duration += Time.deltaTime;
+            yield return null;
+        }
+
+        // Show progress animation even if upgrading.
+        if (to >= 0.99f)
+            this.auraProgressBar.value = 0;
+        else
+            this.auraProgressBar.value = to;
+
+        this.progressBarAnimation = null;
     }
 
     private IEnumerator SayAuraTitle()
