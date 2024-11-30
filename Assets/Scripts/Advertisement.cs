@@ -47,6 +47,7 @@ public class Advertisement : MonoBehaviour
 
         int i = Random.Range(0, clipsToPlay.Length);
         newAd.clip = clipsToPlay[i];
+        newAd.SetDirectAudioVolume(0, 0.1f);
         imageComponent.texture = correspondingTextures[i];
         newAd.targetTexture = correspondingTextures[i];
 
