@@ -4,7 +4,7 @@ using UnityEngine;
 public class Minigame : Screen
 {
     [Tooltip("How many 'minigame's worth this game is")]
-    public int pointWeight = 1;
+    public float pointWeight = 1;
 
     [Tooltip("Minimum number of seconds before minigame can restart")]
     public float frequencyMin;

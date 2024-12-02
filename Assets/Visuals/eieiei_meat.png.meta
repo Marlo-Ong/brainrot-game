@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      eieiei_meat_0: 8586091137443277801
+      eieiei_meat_1: -2414917459736792952
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

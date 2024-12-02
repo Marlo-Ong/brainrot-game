@@ -1,7 +1,9 @@
+using UnityEngine;
 using UnityEngine.Video;
 
 public class Video : Screen
 {
+    public string videoFileName;
     public VideoPlayer[] videosToPlay;
 
     public override void Pause()
@@ -24,6 +26,7 @@ public class Video : Screen
 
         foreach (var video in this.videosToPlay)
         {
+            video.url = System.IO.Path.Combine(Application.streamingAssetsPath, this.videoFileName + ".mp4");
             video.Play();
         }
     }

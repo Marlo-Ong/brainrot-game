@@ -12,7 +12,7 @@ public class Advertisement : Minigame
 {
     public Button closeAdButton;
     public int secondsBeforeAllowingExit;
-    public VideoClip[] clipsToPlay;
+    public string[] clipFileNames;
     public RenderTexture[] correspondingTextures;
 
     private Coroutine endAdCoroutine;
@@ -41,27 +41,32 @@ public class Advertisement : Minigame
         videoComponent.PlaceInFront();
 
         // Choose a random video clip.
-        int i = Random.Range(0, clipsToPlay.Length);
-        newAd.clip = clipsToPlay[i];
-
-        // Lower the audio of the clip.
-        newAd.SetDirectAudioVolume(0, 0.1f);
+        int i = Random.Range(0, clipFileNames.Length);
+        videoComponent.videoFileName = clipFileNames[i];
 
         // Set the image's texture to the video.
         imageComponent.texture = correspondingTextures[i];
         newAd.targetTexture = correspondingTextures[i];
+        newAd.SetDirectAudioVolume(0, 0.1f);
+
+        newAd.url = System.IO.Path.Combine(Application.streamingAssetsPath, clipFileNames[i] + ".mp4");
 
         // Play the clip.
         canvas.gameObject.SetActive(true);
-        newAd.Play();
+        newAd.Prepare();
+        newAd.prepareCompleted += (evt) =>
+        {
+            double maxTime = newAd.frameCount / newAd.frameRate;
+            newAd.Play();
 
-        // Set a timer to end the ad, if not closed by the player first.
-        if (endAdCoroutine != null)
-            StopCoroutine(endAdCoroutine);
-        endAdCoroutine = StartCoroutine(EndAd((float)newAd.length));
+            // Set a timer to end the ad, if not closed by the player first.
+            if (endAdCoroutine != null)
+                StopCoroutine(endAdCoroutine);
+            endAdCoroutine = StartCoroutine(EndAd((float)maxTime));
 
-        // Update the progress of the slider.
-        StartCoroutine(UpdateSlider(sliderComponent, newAd));
+            // Update the progress of the slider.
+            StartCoroutine(UpdateSlider(sliderComponent, (float)maxTime));
+        };
     }
 
     private IEnumerator WaitToAllowExit()
@@ -83,12 +88,14 @@ public class Advertisement : Minigame
             Win();
     }
 
-    IEnumerator UpdateSlider(Slider slider, VideoPlayer ad)
+    IEnumerator UpdateSlider(Slider slider, float maxTime)
     {
-        while (ad != null && ad.time < ad.length)
+        float duration = 0f;
+        while (duration < maxTime)
         {
-            slider.value = (float)(ad.time / ad.length);
+            slider.value = (float)(duration / maxTime);
             yield return null;
+            duration += Time.deltaTime;
         }
     }
 }

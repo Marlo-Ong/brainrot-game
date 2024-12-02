@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -109,14 +108,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void AddAuraPoints(int pointWeight)
+    public static void AddAuraPoints(float pointWeight)
     {
-        if (pointWeight == 0)
-            return;
-
         var data = singleton.auraData;
         int i = singleton.indexOfCurrentTitle + 1;
         int pts = (int)(pointWeight * ((float)data.thresholds[i] / data.minigamesUntilTitle[i]));
+
+        if (pts == 0)
+            return;
 
         // Lose only half points.
         if (pts < 0)
