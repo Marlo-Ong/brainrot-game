@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Minigame : Screen
 {
-    public int auraPointsToWin;
-    public int auraPointsToLose;
+    [Tooltip("How many 'minigame's worth this game is")]
+    public int pointWeight = 1;
 
     [Tooltip("Minimum number of seconds before minigame can restart")]
     public float frequencyMin;
@@ -69,7 +69,7 @@ public class Minigame : Screen
         this.Stop();
         AudioManager.PlaySound(this.OnSuccessSound);
         AudioManager.PlayWinSound();
-        GameManager.AddAuraPoints(this.auraPointsToWin);
+        GameManager.AddAuraPoints(this.pointWeight);
     }
 
     public virtual void Fail()
@@ -77,7 +77,7 @@ public class Minigame : Screen
         this.Stop();
         AudioManager.PlaySound(this.OnFailSound);
         AudioManager.PlayFailSound();
-        GameManager.AddAuraPoints(-this.auraPointsToLose);
+        GameManager.AddAuraPoints(-this.pointWeight);
     }
 
     public virtual void OnUpdate() { }

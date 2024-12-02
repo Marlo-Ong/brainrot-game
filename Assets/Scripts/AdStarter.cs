@@ -9,7 +9,7 @@ public class AdStarter : MonoBehaviour
     public Button button;
     public int secondsBeforeStartingAds;
 
-    void Start()
+    void OnEnable()
     {
         advertisementObject.gameObject.SetActive(false);
         button.gameObject.SetActive(false);

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Set In Inspector")]
     public AuraData auraData;
     public Canvas mainCanvas;
+    public GameObject gameParent;
     public Slider auraProgressBar;
     public IdleTextAnimation middleTextObject;
     public TMP_Text auraTitleSmall;
@@ -60,10 +61,29 @@ public class GameManager : MonoBehaviour
 
         // Play sound.
         StartCoroutine(SayAuraTitle());
+
+        // Activate a GameObject for this title, if specified.
+        GameObject upgradeObject = this.auraData.objectToActivateOnUpgrade[indexOfCurrentTitle];
+        if (upgradeObject != null)
+        {
+            var newObj = Instantiate(upgradeObject);
+            newObj.transform.SetParent(gameParent.transform, false);
+        }
     }
 
-    public static void AddAuraPoints(int pts)
+    public static void AddAuraPoints(int pointWeight)
     {
+        if (pointWeight == 0)
+            return;
+
+        var data = singleton.auraData;
+        int i = singleton.indexOfCurrentTitle + 1;
+        int pts = (int)(pointWeight * ((float)data.thresholds[i] / data.minigamesUntilTitle[i]));
+
+        // Lose only half points.
+        if (pts < 0)
+            pts /= 2;
+
         // Clamp new aura points to the smallest and largest thresholds.
         singleton.auraPoints = math.clamp(
             singleton.auraPoints + pts,
@@ -108,7 +128,7 @@ public class GameManager : MonoBehaviour
 
         // Show progress animation even if upgrading.
         if (to >= 0.99f)
-            this.auraProgressBar.value = 0;
+            this.auraProgressBar.value = to - 1;
         else
             this.auraProgressBar.value = to;
 
