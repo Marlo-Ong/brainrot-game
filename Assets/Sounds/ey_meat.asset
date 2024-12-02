@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8749361338401252850
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-018_{-8749361338401252850}
+  m_AudioClip: {fileID: 8300000, guid: 933f3c76e6e1e4a7fb06ab7442b33d1c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-8044496123956139441
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-014_{-8044496123956139441}
+  m_AudioClip: {fileID: 8300000, guid: 4c491ea240f854502b5e81d6e52c5114, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-3455790623591731183
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-011_{-3455790623591731183}
+  m_AudioClip: {fileID: 8300000, guid: 8e34c4e2d60434b9ea0c9bd11c665ae5, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1941610274058736667
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-019_{-1941610274058736667}
+  m_AudioClip: {fileID: 8300000, guid: d0231fc8c4c754930b19e2963ad77c3b, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1617463220811419094
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-002_{-1617463220811419094}
+  m_AudioClip: {fileID: 8300000, guid: 59f958737ec0b49d295cfc3cb9ecc32b, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1057360303105643095
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-013_{-1057360303105643095}
+  m_AudioClip: {fileID: 8300000, guid: efd3c75fce9424510aa1f1a6ea58b0a7, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-328539201841079184
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-017_{-328539201841079184}
+  m_AudioClip: {fileID: 8300000, guid: a0d3c024e866c435b8b0be2db36c51d7, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &135778973584951438
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-007_{135778973584951438}
+  m_AudioClip: {fileID: 8300000, guid: f7e38c0e00532438c9ac0b46d5318f49, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &488360178633967940
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-001_{488360178633967940}
+  m_AudioClip: {fileID: 8300000, guid: b778ae8ffe2e3456a9292ade5898a7f6, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1852882094145538620
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-006_{1852882094145538620}
+  m_AudioClip: {fileID: 8300000, guid: 74defc9afc49e42e2afe05a39802b447, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2996399465603353455
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-003_{2996399465603353455}
+  m_AudioClip: {fileID: 8300000, guid: a41a374688c25432db4128633a316b93, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4121949893300145612
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-020_{4121949893300145612}
+  m_AudioClip: {fileID: 8300000, guid: d469bb95991c44dde9c31d7879a17a80, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4290084642185128668
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-005_{4290084642185128668}
+  m_AudioClip: {fileID: 8300000, guid: 4606ff519ee824e4c8dc6e5b3c3cdb04, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4450162455287133427
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-015_{4450162455287133427}
+  m_AudioClip: {fileID: 8300000, guid: 12092ea8dc4d74adf98e193a4188d002, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4525255386303888865
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-012_{4525255386303888865}
+  m_AudioClip: {fileID: 8300000, guid: ea32c3321fb14472ea2caa1bf5a49917, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4837254606554658259
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-009_{4837254606554658259}
+  m_AudioClip: {fileID: 8300000, guid: 73ae5ab2304a14727838fb13b2130c49, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5076730361990461457
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-008_{5076730361990461457}
+  m_AudioClip: {fileID: 8300000, guid: 7ac908104328c4a88b6870cca0915caf, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5709125145820808499
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-016_{5709125145820808499}
+  m_AudioClip: {fileID: 8300000, guid: 711552afa293e45d2b37c3ac6a2cfbf7, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ey_meat
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 488360178633967940}
+  - {fileID: -1617463220811419094}
+  - {fileID: 2996399465603353455}
+  - {fileID: 7265745742393511429}
+  - {fileID: 4290084642185128668}
+  - {fileID: 1852882094145538620}
+  - {fileID: 135778973584951438}
+  - {fileID: 5076730361990461457}
+  - {fileID: 4837254606554658259}
+  - {fileID: 6840362733155330209}
+  - {fileID: -3455790623591731183}
+  - {fileID: 4525255386303888865}
+  - {fileID: -1057360303105643095}
+  - {fileID: -8044496123956139441}
+  - {fileID: 4450162455287133427}
+  - {fileID: 5709125145820808499}
+  - {fileID: -328539201841079184}
+  - {fileID: -8749361338401252850}
+  - {fileID: -1941610274058736667}
+  - {fileID: 4121949893300145612}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 0
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &6840362733155330209
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-010_{6840362733155330209}
+  m_AudioClip: {fileID: 8300000, guid: 0110740ebc66a4904b6e362ed474afb3, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &7265745742393511429
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: meat_ey-004_{7265745742393511429}
+  m_AudioClip: {fileID: 8300000, guid: cce98f0a6328844d393f39de3ef61608, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
