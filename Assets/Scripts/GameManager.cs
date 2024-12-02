@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public AuraData auraData;
     public Canvas mainCanvas;
     public GameObject gameParent;
+    public GameObject winScreen;
+    public TMP_Text playTimer;
     public Slider auraProgressBar;
     public IdleTextAnimation middleTextObject;
     public TMP_Text auraTitleSmall;
@@ -29,29 +32,64 @@ public class GameManager : MonoBehaviour
     public int indexOfCurrentTitle = 0;
 
     private Coroutine progressBarAnimation;
+    private bool isPlaying;
 
     void Awake()
     {
         Debug.Assert(singleton == null);
         singleton = this;
+    }
 
+    public void StartGame()
+    {
         // Give lowest title.
         this.auraTitle = this.auraData.titles[0];
+        this.auraTitleLarge.text = this.auraTitle;
+        this.auraTitleSmall.text = this.auraTitle;
+
+        this.auraPoints = 0;
+        this.auraProgressBar.value = 0;
+        this.auraPointsText.text = "AURA: 0";
+        this.indexOfCurrentTitle = 0;
+
+        this.isPlaying = true;
+
+        this.gameParent.SetActive(true);
+    }
+
+    public void EndGame()
+    {
+        this.gameParent.SetActive(false);
+
+        float currentTime = Time.unscaledTime;
+
+        int minutes = Mathf.FloorToInt(currentTime / 60);
+        int seconds = Mathf.FloorToInt(currentTime % 60);
+
+        playTimer.text = $"{minutes:D2}:{seconds:D2} \nminutes";
+        winScreen.SetActive(true);
+
+        this.isPlaying = false;
     }
 
     public void Update()
     {
-        if (indexOfCurrentTitle < this.auraData.titles.Length &&                  // haven't reached highest title
-            this.auraPoints >= this.auraData.thresholds[indexOfCurrentTitle + 1]  // reached next threshold
-        )
+        if (!this.isPlaying)
+            return;
+
+        // Reached highest title
+        if (indexOfCurrentTitle == this.auraData.titles.Length - 1)
+            EndGame();
+
+        // Reached next threshold
+        else if (this.auraPoints >= this.auraData.thresholds[indexOfCurrentTitle + 1])
+        {
             UpgrateTitle();
+        }
     }
 
     public void UpgrateTitle()
     {
-        if (indexOfCurrentTitle == this.auraData.titles.Length - 1)
-            return;
-
         this.auraTitle = this.auraData.titles[++indexOfCurrentTitle];
 
         // Update visuals.
