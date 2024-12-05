@@ -63,6 +63,11 @@ public class IdleTextAnimation : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        Quaternion finalRotation = transform.localRotation;
+        finalRotation.z = _idleCurve.keys[^1].value;
+        transform.localRotation = finalRotation;
+
         if (_loop) StartAnimation();
         else if (_fadeOut) StartCoroutine(AnimateFadeOut());
     }
@@ -77,6 +82,10 @@ public class IdleTextAnimation : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        float finalScale = _idleCurve.keys[^1].value;
+        transform.localScale = new Vector3(finalScale, finalScale, finalScale);
+
         if (_loop) StartAnimation();
         else if (_fadeOut) StartCoroutine(AnimateFadeOut());
     }
